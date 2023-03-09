@@ -54,6 +54,7 @@ let scrolBarEl = document.getElementById('scrolBar');
 let textEl = document.getElementById('text');
 let textPEl = document.getElementById('textP');
 let autoPlayEl = document.getElementById('auto-play');
+let autoPlayReversEl = document.getElementById('auto-play-revers');
 let stopEl = document.getElementById('stop');
 let index=0;
 let loop;
@@ -64,10 +65,17 @@ textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
 
 
 autoPlayEl.addEventListener('click',function(){
-    
+    stop()
     loop = setInterval(tick,3000);
     
 })
+
+autoPlayReversEl.addEventListener('click',function(){
+    stop()
+    loop = setInterval(reverseTick,3000);
+    
+})
+
 stopEl.addEventListener('click',function(){
     
     stop()
@@ -158,3 +166,17 @@ function stop(){
 }
 
 
+function reverseTick(){
+    select[index].classList.remove('active');
+    
+    if(index > 0){
+        index--;
+        
+    }else{
+        index=4;
+    }
+    
+    imgEl.src=(images[index].image);
+    textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
+    select[index].classList.add('active');
+}

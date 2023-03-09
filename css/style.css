@@ -81,7 +81,7 @@
     bottom: 50px;
     text-align: end;
 }
-#auto-play,#stop{
+#auto-play,#stop,#auto-play-revers{
     position: absolute;
     border-radius: 10px;
     width: 50px;
@@ -90,4 +90,9 @@
 }
 #stop{
     bottom: 0;
+}
+#auto-play-revers{
+    bottom: 50%;
+    transform: translate(50%,50%);
+    transform: rotate(180deg);
 }
