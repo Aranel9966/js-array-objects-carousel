@@ -51,17 +51,28 @@ let arrowTopEl = document.getElementById('arrowTop');
 let arrowBotEl = document.getElementById('arrowBot');
 let imgEl = document.getElementById('img');
 let scrolBarEl = document.getElementById('scrolBar');
-let textEl = document.getElementById('text')
-let textPEl = document.getElementById('textP')
+let textEl = document.getElementById('text');
+let textPEl = document.getElementById('textP');
+let autoPlayEl = document.getElementById('auto-play');
+let stopEl = document.getElementById('stop');
 let index=0;
+let loop;
 
-setInterval(tick,5000);
     
 imgEl.src=(images[index].image);
 textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
 
 
-
+autoPlayEl.addEventListener('click',function(){
+    
+    loop = setInterval(tick,3000);
+    
+})
+stopEl.addEventListener('click',function(){
+    
+    stop()
+    
+})
 
 arrowBotEl.addEventListener('click',function(){
 
@@ -125,6 +136,7 @@ select[index].classList.add('active')
 //////////////////
 // function
 /////////////////
+// function auto play 
 function tick(){
     select[index].classList.remove('active');
     
@@ -138,6 +150,11 @@ function tick(){
     imgEl.src=(images[index].image);
     textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
     select[index].classList.add('active');
+}
+// function stop auto play 
+
+function stop(){
+    clearInterval(loop)
 }
 
 

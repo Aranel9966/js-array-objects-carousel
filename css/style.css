@@ -81,3 +81,13 @@
     bottom: 50px;
     text-align: end;
 }
+#auto-play,#stop{
+    position: absolute;
+    border-radius: 10px;
+    width: 50px;
+    background-color:cornflowerblue;
+    margin: 10px;
+}
+#stop{
+    bottom: 0;
+}
