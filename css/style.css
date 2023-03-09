@@ -12,11 +12,14 @@
     display: flex;
     margin:100px auto;
     position: relative;
+    
 
 }
 
 .containerImg img{
     width:100%;
+    object-fit: cover;
+    object-position: 50% 40%;
    
 }
 
@@ -51,7 +54,7 @@
 }
 
 #scrolBar{
-    width: 160px;
+    width: 190px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -89,10 +92,10 @@
     margin: 10px;
 }
 #stop{
-    bottom: 0;
+    bottom: 45%;
 }
 #auto-play-revers{
-    bottom: 50%;
-    transform: translate(50%,50%);
+    bottom: 0;
     transform: rotate(180deg);
+
 }

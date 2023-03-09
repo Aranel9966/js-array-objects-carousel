@@ -128,12 +128,16 @@ arrowTopEl.addEventListener('click',function(){
 
 
 // for per inserire le img nella scrolbar
+
 images.forEach((img)=>{
+    
     let scrolImg  = document.createElement('img');
     scrolImg.classList.add('img-scrol');
     scrolImg.src=(img.image);
     scrolBarEl.append(scrolImg);
-});
+    
+})
+
 
 const select = document.querySelectorAll(".img-scrol");
 
@@ -144,6 +148,7 @@ select[index].classList.add('active')
 //////////////////
 // function
 /////////////////
+
 // function auto play 
 function tick(){
     select[index].classList.remove('active');
@@ -165,6 +170,7 @@ function stop(){
     clearInterval(loop)
 }
 
+// function stop auto play revers 
 
 function reverseTick(){
     select[index].classList.remove('active');
