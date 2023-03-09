@@ -51,10 +51,61 @@ let arrowTopEl = document.getElementById('arrowTop');
 let arrowBotEl = document.getElementById('arrowBot');
 let imgEl = document.getElementById('img');
 let scrolBarEl = document.getElementById('scrolBar');
+let textEl = document.getElementById('text')
+let textPEl = document.getElementById('textP')
+let index=0;
+
+setInterval(tick,5000);
+    
+imgEl.src=(images[index].image);
+textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
 
 
 
 
+arrowBotEl.addEventListener('click',function(){
+
+
+    
+    //asseconda dell'indice rimuovo la classe 'active'
+    select[index].classList.remove('active');
+    // condizione per il loop 
+    if(index < images.length-1){
+        index++;
+        
+    }else{
+        index=0;
+    }
+    // aggiungo il src assecondo dell' indice
+    imgEl.src=(images[index].image);
+    // h2El.innerHTML=(images[index].title);
+
+    textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
+    //asseconda dell'indice aggiungo la classe 'active'
+    select[index].classList.add('active');
+
+});
+
+arrowTopEl.addEventListener('click',function(){
+    
+    //asseconda dell'indice rimuovo la classe 'active'
+    select[index].classList.remove('active');
+    // condizione per il loop 
+    if(index > 0){
+        index--;
+        
+    }else{
+        index=4;
+    }
+    // aggiungo il src assecondo dell' indice
+    imgEl.src=(images[index].image);
+
+    textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
+
+    //asseconda dell'indice aggiungo la classe 'active'
+    select[index].classList.add('active');
+
+});
 
 
 // for per inserire le img nella scrolbar
@@ -65,7 +116,28 @@ images.forEach((img)=>{
     scrolBarEl.append(scrolImg);
 });
 
+const select = document.querySelectorAll(".img-scrol");
+
+//asseconda dell'indice aggiungo la classe 'active'
+select[index].classList.add('active')
 
 
+//////////////////
+// function
+/////////////////
+function tick(){
+    select[index].classList.remove('active');
+    
+    if(index < images.length-1){    
+        index++
+
+    }else{
+        index=0    
+    }
+    
+    imgEl.src=(images[index].image);
+    textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
+    select[index].classList.add('active');
+}
 
 
