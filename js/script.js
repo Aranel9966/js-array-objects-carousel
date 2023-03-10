@@ -119,27 +119,8 @@ arrowTopEl.addEventListener('click',function(){
 });
 
 
-// for per inserire le img nella scrolbar
 
-images.forEach((img,index)=>{
-    let scrolImg  = document.createElement('img');
-    scrolImg.classList.add('img-scrol');
-    scrolImg.src=(img.image);
-    scrolBarEl.append(scrolImg);
-    
-    scrolImg.addEventListener('click',function(){
-        debugClass() 
-           
-    // stampImg() non prende la function
-    imgEl.src=(images[index].image);
-    textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
-
-
-    select[index].classList.add('active');
-
-    })
-
-})
+createThumbnails()
 
 
 const select = document.querySelectorAll(".img-scrol");
@@ -152,11 +133,11 @@ select[index].classList.add('active')
 // function
 /////////////////
 function debugClass(){
-
     for(let index=0;index<images.length;index++){
     select[index].classList.remove('active');
     }
 }  
+
 //function stampa
 function stampImg(){
     imgEl.src=(images[index].image);
@@ -174,18 +155,16 @@ function tick(){
         index=0    
     }
     
-    imgEl.src=(images[index].image);
-    textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
+    stampImg()    
     select[index].classList.add('active');
 }
-// function stop auto play 
 
+// function stop auto play 
 function stop(){
     clearInterval(loop)
 }
 
-// function stop auto play revers 
-
+// function auto play revers 
 function reverseTick(){
     select[index].classList.remove('active');
     
@@ -196,7 +175,28 @@ function reverseTick(){
         index=4;
     }
     
-    imgEl.src=(images[index].image);
-    textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
+    stampImg()
     select[index].classList.add('active');
+}
+
+// function create Thumbnails 
+function createThumbnails(){
+
+// forEach per inserire le img nella scrolbar
+    images.forEach((img,nowIndex)=>{
+        let scrolImg  = document.createElement('img');
+        scrolImg.classList.add('img-scrol');
+        scrolImg.src=(img.image);
+        scrolBarEl.append(scrolImg);
+        
+        scrolImg.addEventListener('click',function(){
+            // rendo l'index generale uguale all'indexdel forEach 
+            index=nowIndex
+            debugClass() 
+            stampImg() 
+            select[index].classList.add('active');
+    
+        })
+    
+    })
 }
