@@ -60,8 +60,7 @@ let index=0;
 let loop;
 
     
-imgEl.src=(images[index].image);
-textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
+stampImg()
 
 
 autoPlayEl.addEventListener('click',function(){
@@ -76,11 +75,8 @@ autoPlayReversEl.addEventListener('click',function(){
     
 })
 
-stopEl.addEventListener('click',function(){
+stopEl.addEventListener('click',function(){stop()})
     
-    stop()
-    
-})
 
 arrowBotEl.addEventListener('click',function(){
 
@@ -95,11 +91,9 @@ arrowBotEl.addEventListener('click',function(){
     }else{
         index=0;
     }
-    // aggiungo il src assecondo dell' indice
-    imgEl.src=(images[index].image);
-    // h2El.innerHTML=(images[index].title);
+    
+    stampImg()
 
-    textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
     //asseconda dell'indice aggiungo la classe 'active'
     select[index].classList.add('active');
 
@@ -116,10 +110,8 @@ arrowTopEl.addEventListener('click',function(){
     }else{
         index=4;
     }
-    // aggiungo il src assecondo dell' indice
-    imgEl.src=(images[index].image);
-
-    textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
+    
+    stampImg()
 
     //asseconda dell'indice aggiungo la classe 'active'
     select[index].classList.add('active');
@@ -129,13 +121,24 @@ arrowTopEl.addEventListener('click',function(){
 
 // for per inserire le img nella scrolbar
 
-images.forEach((img)=>{
-    
+images.forEach((img,index)=>{
     let scrolImg  = document.createElement('img');
     scrolImg.classList.add('img-scrol');
     scrolImg.src=(img.image);
     scrolBarEl.append(scrolImg);
     
+    scrolImg.addEventListener('click',function(){
+        debugClass() 
+           
+    // stampImg() non prende la function
+    imgEl.src=(images[index].image);
+    textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
+
+
+    select[index].classList.add('active');
+
+    })
+
 })
 
 
@@ -148,6 +151,17 @@ select[index].classList.add('active')
 //////////////////
 // function
 /////////////////
+function debugClass(){
+
+    for(let index=0;index<images.length;index++){
+    select[index].classList.remove('active');
+    }
+}  
+//function stampa
+function stampImg(){
+    imgEl.src=(images[index].image);
+    textEl.innerText=`${(images[index].title)} \n ${(images[index].text)}`;
+}
 
 // function auto play 
 function tick(){
