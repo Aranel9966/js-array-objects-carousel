@@ -21,8 +21,6 @@ Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.
 */
 
 
-
-
 const images = [
     {
         image: 'img/01.webp',
@@ -62,7 +60,7 @@ let loop;
     
 stampImg()
 
-
+// button play 
 autoPlayEl.addEventListener('click',function(){
     stop()
     loop = setInterval(tick,3000);
@@ -77,11 +75,8 @@ autoPlayReversEl.addEventListener('click',function(){
 
 stopEl.addEventListener('click',function(){stop()})
     
-
-arrowBotEl.addEventListener('click',function(){
-
-
-    
+//arrow
+arrowBotEl.addEventListener('click',function(){  
     //asseconda dell'indice rimuovo la classe 'active'
     select[index].classList.remove('active');
     // condizione per il loop 
@@ -100,7 +95,6 @@ arrowBotEl.addEventListener('click',function(){
 });
 
 arrowTopEl.addEventListener('click',function(){
-    
     //asseconda dell'indice rimuovo la classe 'active'
     select[index].classList.remove('active');
     // condizione per il loop 
@@ -118,10 +112,7 @@ arrowTopEl.addEventListener('click',function(){
 
 });
 
-
-
 createThumbnails()
-
 
 const select = document.querySelectorAll(".img-scrol");
 

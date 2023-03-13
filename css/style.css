@@ -85,6 +85,7 @@
     text-align: end;
     text-shadow: 2px 2px 3px #00000099;
 }
+
 #auto-play,#stop,#auto-play-revers{
     position: absolute;
     border-radius: 10px;
@@ -94,9 +95,11 @@
     text-shadow: 2px 2px 3px #00000099;
 
 }
+
 #stop{
     bottom: 45%;
 }
+
 #auto-play-revers{
     bottom: 0;
     transform: rotate(180deg) ;
